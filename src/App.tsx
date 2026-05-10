@@ -5,18 +5,18 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Github, 
-  Linkedin, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Download, 
-  Server, 
-  Code, 
-  LayoutDashboard, 
-  ShoppingBag, 
-  ChevronRight, 
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+  Download,
+  Server,
+  Code,
+  LayoutDashboard,
+  ShoppingBag,
+  ChevronRight,
   ExternalLink,
   Menu,
   X,
@@ -24,21 +24,28 @@ import {
   Moon,
   ArrowUp,
   Database,
-  ArrowRight
+  ArrowRight,
 } from 'lucide-react';
-import { 
-  personalData, 
-  skills, 
-  projects, 
-  services, 
-  experience, 
-  testimonials, 
-  blogPosts 
+import {
+  personalData,
+  skills,
+  projects,
+  services,
+  experience,
+  testimonials,
+  blogPosts,
 } from './data';
 
+import cvFile from './assets/cv.pdf';
 // --- Custom Components ---
 
-const Navbar = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => void }) => {
+const Navbar = ({
+  isDark,
+  toggleTheme,
+}: {
+  isDark: boolean;
+  toggleTheme: () => void;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -58,15 +65,18 @@ const Navbar = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass py-4 shadow-lg' : 'bg-transparent py-6'}`}>
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass py-4 shadow-lg' : 'bg-transparent py-6'}`}
+    >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <motion.a 
+        <motion.a
           href="#home"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           className="text-2xl font-bold bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent"
         >
-          {personalData.name.split(' ')[0]}<span className="text-slate-400 font-light">.dev</span>
+          {personalData.name.split(' ')[0]}
+          <span className="text-slate-400 font-light">.dev</span>
         </motion.a>
 
         {/* Desktop Menu */}
@@ -83,7 +93,7 @@ const Navbar = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
               {link.name}
             </motion.a>
           ))}
-          <button 
+          <button
             onClick={toggleTheme}
             className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
@@ -130,10 +140,16 @@ const Navbar = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
   );
 };
 
-const SectionHeading = ({ children, subtitle }: { children: React.ReactNode; subtitle?: string }) => (
+const SectionHeading = ({
+  children,
+  subtitle,
+}: {
+  children: React.ReactNode;
+  subtitle?: string;
+}) => (
   <div className="mb-12">
     {subtitle && (
-      <motion.p 
+      <motion.p
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         className="text-emerald-500 font-semibold mb-2"
@@ -141,7 +157,7 @@ const SectionHeading = ({ children, subtitle }: { children: React.ReactNode; sub
         {subtitle}
       </motion.p>
     )}
-    <motion.h2 
+    <motion.h2
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       className="text-4xl font-bold"
@@ -152,7 +168,15 @@ const SectionHeading = ({ children, subtitle }: { children: React.ReactNode; sub
   </div>
 );
 
-const SkillCard = ({ name, level, index }: { name: string; level: number; index: number }) => (
+const SkillCard = ({
+  name,
+  level,
+  index,
+}: {
+  name: string;
+  level: number;
+  index: number;
+}) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -160,7 +184,9 @@ const SkillCard = ({ name, level, index }: { name: string; level: number; index:
     className="mb-6"
   >
     <div className="flex justify-between mb-2">
-      <span className="font-medium text-slate-700 dark:text-slate-300">{name}</span>
+      <span className="font-medium text-slate-700 dark:text-slate-300">
+        {name}
+      </span>
       <span className="text-slate-500">{level}%</span>
     </div>
     <div className="h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
@@ -174,7 +200,7 @@ const SkillCard = ({ name, level, index }: { name: string; level: number; index:
   </motion.div>
 );
 
-const ProjectCard = ({ project }: { project: typeof projects[0] }) => (
+const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => (
   <motion.div
     layout
     initial={{ opacity: 0, scale: 0.9 }}
@@ -183,17 +209,23 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => (
     className="glass rounded-2xl overflow-hidden shadow-sm group"
   >
     <div className="relative h-60 overflow-hidden">
-      <img 
-        src={project.image} 
-        alt={project.title} 
+      <img
+        src={project.image}
+        alt={project.title}
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
         <div className="flex gap-4">
-          <a href={project.github} className="p-2 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-colors">
+          <a
+            href={project.github}
+            className="p-2 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-colors"
+          >
             <Github size={20} />
           </a>
-          <a href={project.demo} className="p-2 bg-emerald-500 rounded-full text-white hover:bg-emerald-600 transition-colors">
+          <a
+            href={project.demo}
+            className="p-2 bg-emerald-500 rounded-full text-white hover:bg-emerald-600 transition-colors"
+          >
             <ExternalLink size={20} />
           </a>
         </div>
@@ -203,11 +235,18 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => (
       </div>
     </div>
     <div className="p-6">
-      <h3 className="text-xl font-bold mb-2 group-hover:text-emerald-500 transition-colors">{project.title}</h3>
-      <p className="text-slate-500 text-sm mb-4 line-clamp-2">{project.description}</p>
+      <h3 className="text-xl font-bold mb-2 group-hover:text-emerald-500 transition-colors">
+        {project.title}
+      </h3>
+      <p className="text-slate-500 text-sm mb-4 line-clamp-2">
+        {project.description}
+      </p>
       <div className="flex flex-wrap gap-2">
-        {project.tech.map(t => (
-          <span key={t} className="text-[10px] font-mono bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md text-slate-600 dark:text-slate-400">
+        {project.tech.map((t) => (
+          <span
+            key={t}
+            className="text-[10px] font-mono bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-md text-slate-600 dark:text-slate-400"
+          >
             {t}
           </span>
         ))}
@@ -218,7 +257,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => (
 
 const ContactForm = () => {
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Simulate success
@@ -231,18 +270,33 @@ const ContactForm = () => {
       <div className="grid md:grid-cols-2 gap-4">
         <div className="space-y-1">
           <label className="text-sm font-medium text-slate-500">Name</label>
-          <input required type="text" className="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 transition-all outline-none" placeholder="John Doe" />
+          <input
+            required
+            type="text"
+            className="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 transition-all outline-none"
+            placeholder="John Doe"
+          />
         </div>
         <div className="space-y-1">
           <label className="text-sm font-medium text-slate-500">Email</label>
-          <input required type="email" className="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 transition-all outline-none" placeholder="john@example.com" />
+          <input
+            required
+            type="email"
+            className="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 transition-all outline-none"
+            placeholder="john@example.com"
+          />
         </div>
       </div>
       <div className="space-y-1">
         <label className="text-sm font-medium text-slate-500">Message</label>
-        <textarea required rows={4} className="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 transition-all outline-none" placeholder="How can I help you?" />
+        <textarea
+          required
+          rows={4}
+          className="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 transition-all outline-none"
+          placeholder="How can I help you?"
+        />
       </div>
-      <button 
+      <button
         type="submit"
         className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-500/20 transition-all active:scale-[0.98]"
       >
@@ -273,14 +327,17 @@ export default function App() {
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
 
       {/* Hero Section */}
-      <header id="home" className="min-h-screen flex items-center section-padding pt-32">
+      <header
+        id="home"
+        className="min-h-screen flex items-center section-padding pt-32"
+      >
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.span 
+            <motion.span
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3 }}
@@ -289,27 +346,36 @@ export default function App() {
               Available for Hire
             </motion.span>
             <h1 className="text-5xl md:text-8xl font-extrabold mb-8 leading-tight">
-              Building <span className="bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent">Robust & Scalable</span> Backend Solutions.
+              Building{' '}
+              <span className="bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent">
+                Robust & Scalable
+              </span>{' '}
+              Backend Solutions.
             </h1>
             <p className="text-xl md:text-2xl text-slate-500 mb-12 max-w-2xl mx-auto leading-relaxed">
-              Hi, I'm <span className="text-slate-900 dark:text-white font-semibold">{personalData.name}</span>, a Senior {personalData.role} dedicated to engineering performance-driven systems and seamless user experiences.
+              Hi, I'm{' '}
+              <span className="text-slate-900 dark:text-white font-semibold">
+                {personalData.name}
+              </span>
+              , a Senior {personalData.role} dedicated to engineering
+              performance-driven systems and seamless user experiences.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <a 
-                href="#projects" 
+              <a
+                href="#projects"
                 className="bg-emerald-500 text-white px-10 py-5 rounded-full font-bold shadow-2xl shadow-emerald-500/25 hover:bg-emerald-600 hover:-translate-y-1 transition-all flex items-center gap-3"
               >
                 View Projects <ArrowRight size={20} />
               </a>
-              <a 
-                href="#contact" 
+              <a
+                href="#contact"
                 className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-10 py-5 rounded-full font-bold border border-slate-200 dark:border-slate-800 hover:border-emerald-500 transition-all shadow-lg"
               >
                 Let's Talk
               </a>
             </div>
           </motion.div>
-          
+
           {/* Animated Background Decoration */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 pointer-events-none">
             <div className="absolute top-0 left-1/4 w-64 h-64 bg-emerald-500/10 blur-[120px] rounded-full animate-pulse" />
@@ -327,17 +393,17 @@ export default function App() {
             className="relative"
           >
             <div className="relative z-10 aspect-[4/5] rounded-[3rem] overflow-hidden glass p-4 shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop" 
-                alt="Workspace" 
+              <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop"
+                alt="Workspace"
                 className="w-full h-full object-cover rounded-[2.5rem]"
               />
             </div>
-            
+
             {/* Floating Bento Pieces */}
-            <motion.div 
+            <motion.div
               animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               className="absolute -top-6 -right-6 glass p-5 rounded-2xl shadow-xl z-20 border-l-4 border-emerald-500"
             >
               <div className="flex items-center gap-3">
@@ -348,9 +414,9 @@ export default function App() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               animate={{ y: [0, 15, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
               className="absolute -bottom-10 -left-6 glass p-6 rounded-3xl shadow-xl z-20 max-w-[280px]"
             >
               <div className="flex gap-4">
@@ -359,7 +425,9 @@ export default function App() {
                 </div>
                 <div>
                   <p className="font-bold text-sm mb-1">Architecture</p>
-                  <p className="text-xs text-slate-500 leading-tight">Expert in scalable systems & database design.</p>
+                  <p className="text-xs text-slate-500 leading-tight">
+                    Expert in scalable systems & database design.
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -371,54 +439,69 @@ export default function App() {
           <div>
             <SectionHeading subtitle="Who I am">About Me</SectionHeading>
             <p className="text-xl text-slate-500 mb-10 leading-relaxed font-light">
-              I'm a dedicated <span className="text-slate-900 dark:text-white font-semibold">Backend Architect</span> with a passion for building robust digital ecosystems. {personalData.bio}
+              I'm a dedicated{' '}
+              <span className="text-slate-900 dark:text-white font-semibold">
+                Backend Architect
+              </span>{' '}
+              with a passion for building robust digital ecosystems.{' '}
+              {personalData.bio}
             </p>
-            
+
             {/* Bento Grid Stats */}
             <div className="grid grid-cols-2 gap-4 mb-12">
-              <motion.div 
+              <motion.div
                 whileHover={{ y: -5 }}
                 className="glass p-6 rounded-[2rem] border-b-4 border-emerald-500"
               >
                 <MapPin className="text-emerald-500 mb-4" size={24} />
-                <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-1">Location</p>
+                <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-1">
+                  Location
+                </p>
                 <p className="font-bold text-lg">{personalData.location}</p>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 whileHover={{ y: -5 }}
                 className="glass p-6 rounded-[2rem] border-b-4 border-blue-500"
               >
                 <Code className="text-blue-500 mb-4" size={24} />
-                <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-1">Degree</p>
+                <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-1">
+                  Degree
+                </p>
                 <p className="font-bold text-lg">Informatics Eng.</p>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 whileHover={{ y: -5 }}
                 className="glass p-6 rounded-[2rem] border-b-4 border-purple-500"
               >
                 <LayoutDashboard className="text-purple-500 mb-4" size={24} />
-                <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-1">Experience</p>
+                <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-1">
+                  Experience
+                </p>
                 <p className="font-bold text-lg">4+ Years</p>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 whileHover={{ y: -5 }}
                 className="glass p-6 rounded-[2rem] border-b-4 border-orange-500"
               >
                 <Sun className="text-orange-500 mb-4" size={24} />
-                <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-1">Status</p>
+                <p className="text-xs text-slate-500 font-bold uppercase tracking-widest mb-1">
+                  Status
+                </p>
                 <p className="font-bold text-lg">Open to Hire</p>
               </motion.div>
             </div>
 
             <div className="space-y-10">
-              <h4 className="text-xs font-black uppercase tracking-[0.3em] text-slate-400">Professional Journey</h4>
+              <h4 className="text-xs font-black uppercase tracking-[0.3em] text-slate-400">
+                Professional Journey
+              </h4>
               <div className="space-y-12">
                 {experience.map((exp: any, idx) => (
-                  <motion.div 
-                    key={idx} 
+                  <motion.div
+                    key={idx}
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.1 }}
@@ -433,17 +516,28 @@ export default function App() {
                         <div className="flex justify-between items-center mb-2">
                           <h5 className="font-bold text-xl group-hover:text-emerald-500 transition-colors">
                             {exp.url ? (
-                              <a href={exp.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                              <a
+                                href={exp.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2"
+                              >
                                 {exp.company} <ExternalLink size={16} />
                               </a>
-                            ) : exp.company}
+                            ) : (
+                              exp.company
+                            )}
                           </h5>
                           <span className="text-[10px] font-black uppercase tracking-widest bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-full text-slate-500">
                             {exp.period}
                           </span>
                         </div>
-                        <p className="text-sm font-bold text-emerald-500 mb-3">{exp.role}</p>
-                        <p className="text-slate-500 leading-relaxed text-sm">{exp.description}</p>
+                        <p className="text-sm font-bold text-emerald-500 mb-3">
+                          {exp.role}
+                        </p>
+                        <p className="text-slate-500 leading-relaxed text-sm">
+                          {exp.description}
+                        </p>
                       </div>
                     </div>
                   </motion.div>
@@ -457,15 +551,22 @@ export default function App() {
       {/* Skills Section */}
       <section id="skills" className="bg-slate-100 dark:bg-slate-900/50 py-24">
         <div className="section-padding">
-          <SectionHeading subtitle="My Toolbox">Technical Proficiency</SectionHeading>
-          
+          <SectionHeading subtitle="My Toolbox">
+            Technical Proficiency
+          </SectionHeading>
+
           <div className="grid lg:grid-cols-2 gap-20">
             <div>
               <h3 className="text-2xl font-bold mb-8 flex items-center gap-3">
                 <Server className="text-emerald-500" /> Backend Core
               </h3>
               {skills.backend.map((skill, i) => (
-                <SkillCard key={skill.name} name={skill.name} level={skill.level} index={i} />
+                <SkillCard
+                  key={skill.name}
+                  name={skill.name}
+                  level={skill.level}
+                  index={i}
+                />
               ))}
             </div>
             <div>
@@ -473,7 +574,12 @@ export default function App() {
                 <Code className="text-blue-500" /> Frontend UI
               </h3>
               {skills.frontend.map((skill, i) => (
-                <SkillCard key={skill.name} name={skill.name} level={skill.level} index={i} />
+                <SkillCard
+                  key={skill.name}
+                  name={skill.name}
+                  level={skill.level}
+                  index={i}
+                />
               ))}
             </div>
           </div>
@@ -483,9 +589,11 @@ export default function App() {
       {/* Projects Section */}
       <section id="projects" className="section-padding">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-          <SectionHeading subtitle="Success Stories">Selected Projects</SectionHeading>
+          <SectionHeading subtitle="Success Stories">
+            Selected Projects
+          </SectionHeading>
           <div className="flex gap-2 p-1 bg-slate-100 dark:bg-slate-900 rounded-xl mb-12 md:mb-0">
-            {['all', 'SaaS', 'E-commerce', 'Backend'].map(category => (
+            {['all', 'SaaS', 'E-commerce', 'Backend'].map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveTab(category)}
@@ -500,7 +608,9 @@ export default function App() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-20">
           <AnimatePresence mode="popLayout">
             {projects
-              .filter(p => activeTab === 'all' || p.category.includes(activeTab))
+              .filter(
+                (p) => activeTab === 'all' || p.category.includes(activeTab)
+              )
               .map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
@@ -511,8 +621,10 @@ export default function App() {
       {/* Services Section */}
       <section id="services" className="bg-slate-900 text-white py-24">
         <div className="section-padding">
-          <SectionHeading subtitle="What I Offer">Specialized Services</SectionHeading>
-          
+          <SectionHeading subtitle="What I Offer">
+            Specialized Services
+          </SectionHeading>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <motion.div
@@ -532,7 +644,10 @@ export default function App() {
                 <p className="text-slate-400 text-sm leading-relaxed">
                   {service.description}
                 </p>
-                <a href="#contact" className="mt-6 flex items-center gap-2 text-emerald-500 font-bold text-sm">
+                <a
+                  href="#contact"
+                  className="mt-6 flex items-center gap-2 text-emerald-500 font-bold text-sm"
+                >
                   Learn More <ChevronRight size={16} />
                 </a>
               </motion.div>
@@ -541,19 +656,25 @@ export default function App() {
         </div>
       </section>
 
-
-
       {/* Resume Section */}
-      <section className="section-padding bg-emerald-500/5 dark:bg-emerald-500/10 rounded-[4rem] mx-6">
+      <section className="section-padding bg-emerald-500/5 dark:bg-emerald-500/10 rounded-[4rem] mx-6 mt-10">
         <div className="text-center max-w-3xl mx-auto">
-          <SectionHeading subtitle="Resume">Ready to Work Together?</SectionHeading>
+          <SectionHeading subtitle="Resume">
+            Ready to Work Together?
+          </SectionHeading>
           <p className="text-lg text-slate-500 mb-10">
-            For more details about my technical journey, university background, and complete project list, feel free to download my full CV or reach out directly.
+            For more details about my technical journey, university background,
+            and complete project list, feel free to download my full CV or reach
+            out directly.
           </p>
           <div className="flex flex-wrap justify-center gap-6">
-            <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-10 py-5 rounded-full font-bold shadow-xl shadow-emerald-500/20 transition-all flex items-center gap-3 active:scale-95">
+            <a
+              href={cvFile}
+              download="My-CV.pdf"
+              className="bg-emerald-500 hover:bg-emerald-600 text-white px-10 py-5 rounded-full font-bold shadow-xl shadow-emerald-500/20 transition-all flex items-center gap-3 active:scale-95"
+            >
               <Download size={24} /> Download CV
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -564,34 +685,60 @@ export default function App() {
           <div>
             <SectionHeading subtitle="Get in touch">Contact Me</SectionHeading>
             <p className="text-lg text-slate-500 mb-12">
-              Have a project in mind or want to discuss a potential partnership? I'm always open to new opportunities and technical challenges.
+              Have a project in mind or want to discuss a potential partnership?
+              I'm always open to new opportunities and technical challenges.
             </p>
 
             <div className="space-y-8 mb-12">
               <div className="flex items-center gap-6 group">
                 <div className="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center group-hover:border-emerald-500 transition-colors">
-                  <Mail size={24} className="group-hover:text-emerald-500 transition-colors" />
+                  <Mail
+                    size={24}
+                    className="group-hover:text-emerald-500 transition-colors"
+                  />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Email Me</p>
+                  <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">
+                    Email Me
+                  </p>
                   <p className="text-xl font-bold">{personalData.email}</p>
                 </div>
               </div>
               <div className="flex items-center gap-6 group">
                 <div className="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center group-hover:border-emerald-500 transition-colors">
-                  <Phone size={24} className="group-hover:text-emerald-500 transition-colors" />
+                  <Phone
+                    size={24}
+                    className="group-hover:text-emerald-500 transition-colors"
+                  />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Call Me</p>
+                  <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">
+                    Call Me
+                  </p>
                   <p className="text-xl font-bold">{personalData.phone}</p>
                 </div>
               </div>
             </div>
 
             <div className="flex gap-4">
-              <a href={personalData.github} className="w-12 h-12 rounded-full glass flex items-center justify-center hover:scale-110 transition-transform"><Github size={20}/></a>
-              <a href={personalData.linkedin} className="w-12 h-12 rounded-full glass flex items-center justify-center hover:scale-110 transition-transform"><Linkedin size={20}/></a>
-              <a href="#" className="w-12 h-12 rounded-full glass flex items-center justify-center hover:scale-110 transition-transform"><Mail size={20}/></a>
+              <a
+                href={personalData.github}
+                className="w-12 h-12 rounded-full glass flex items-center justify-center hover:scale-110 transition-transform"
+              >
+                <Github size={20} />
+              </a>
+              <a
+                href={personalData.linkedin}
+                className="w-12 h-12 rounded-full glass flex items-center justify-center hover:scale-110 transition-transform"
+              >
+                <Linkedin size={20} />
+              </a>
+              <a
+                href="#"
+                className="w-12 h-12 rounded-full glass flex items-center justify-center hover:scale-110 transition-transform"
+              >
+                <Mail size={20} />
+              </a>
             </div>
           </div>
 
@@ -606,18 +753,35 @@ export default function App() {
       <footer className="py-12 border-t border-slate-200 dark:border-slate-800 section-padding">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
           <div>
-            <p className="text-slate-500">&copy; 2026 {personalData.name}. All rights reserved.</p>
+            <p className="text-slate-500">
+              &copy; 2026 {personalData.name}. All rights reserved.
+            </p>
           </div>
           <div className="flex gap-8">
-            <a href="#home" className="text-sm font-medium hover:text-emerald-500">Home</a>
-            <a href="#projects" className="text-sm font-medium hover:text-emerald-500">Privacy Policy</a>
-            <a href="#about" className="text-sm font-medium hover:text-emerald-500">Terms of Use</a>
+            <a
+              href="#home"
+              className="text-sm font-medium hover:text-emerald-500"
+            >
+              Home
+            </a>
+            <a
+              href="#projects"
+              className="text-sm font-medium hover:text-emerald-500"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="#about"
+              className="text-sm font-medium hover:text-emerald-500"
+            >
+              Terms of Use
+            </a>
           </div>
         </div>
       </footer>
 
       {/* Scroll to Top */}
-      <button 
+      <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className="fixed bottom-8 right-8 w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-2xl shadow-emerald-500/50 hover:-translate-y-2 transition-all transition-duration-300 z-50 active:scale-90"
       >
@@ -626,4 +790,3 @@ export default function App() {
     </div>
   );
 }
-
