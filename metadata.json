@@ -1,0 +1,10 @@
+{
+  "name": "Ali Mohammad - Full Stack Developer Portfolio",
+  "description": "A premium, modern portfolio for Ali Mohammad, a Backend and Full Stack Developer specializing in Laravel, Node.js, and React.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "majorCapabilities": []
+}
