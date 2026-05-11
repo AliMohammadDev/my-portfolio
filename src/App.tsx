@@ -36,7 +36,7 @@ import {
   blogPosts,
 } from './data';
 
-import cvFile from './assets/cv.pdf';
+import cvFile from '../public/cv.pdf';
 // --- Custom Components ---
 
 const Navbar = ({
