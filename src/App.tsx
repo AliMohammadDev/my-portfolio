@@ -782,10 +782,35 @@ export default function App() {
         </div>
       </footer>
 
+      {/* WhatsApp Floating Button */}
+      <a
+        href="https://wa.me/963951548685"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-8 right-8 z-50 group"
+      >
+        {/* Pulse Rings */}
+        <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-30"></span>
+        <span className="absolute inset-0 rounded-full bg-green-400 animate-pulse opacity-40"></span>
+
+        {/* Main Button */}
+        <div className="relative w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(34,197,94,0.6)] hover:scale-110 transition-all duration-300 border-4 border-white/20 backdrop-blur-xl">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="38"
+            height="38"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path d="M20.52 3.48A11.91 11.91 0 0 0 12.06 0C5.52 0 .18 5.34.18 11.88c0 2.1.54 4.14 1.62 5.94L0 24l6.36-1.68a11.8 11.8 0 0 0 5.7 1.44h.06c6.54 0 11.88-5.34 11.88-11.88 0-3.18-1.26-6.18-3.48-8.4Zm-8.46 18.3h-.06a9.9 9.9 0 0 1-5.04-1.38l-.36-.18-3.78 1.02 1.02-3.66-.24-.36a9.8 9.8 0 0 1-1.5-5.22c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.1 1.02 6.96 2.88a9.8 9.8 0 0 1 2.88 6.96c0 5.46-4.44 9.9-9.9 9.9Zm5.46-7.38c-.3-.18-1.8-.9-2.1-1.02-.3-.12-.48-.18-.72.18-.18.3-.72 1.02-.9 1.2-.18.18-.3.24-.6.06-.3-.18-1.26-.48-2.4-1.56-.9-.78-1.5-1.74-1.68-2.04-.18-.3 0-.42.12-.6.12-.12.3-.3.42-.48.12-.18.18-.3.3-.48.12-.18.06-.36 0-.54-.06-.18-.72-1.74-.96-2.34-.24-.6-.54-.54-.72-.54h-.6c-.18 0-.48.06-.72.3-.24.24-.96.96-.96 2.34s.96 2.7 1.08 2.88c.12.18 1.92 2.94 4.68 4.14.66.3 1.2.48 1.62.6.66.18 1.26.18 1.74.12.54-.06 1.8-.72 2.04-1.44.24-.72.24-1.32.18-1.44-.06-.12-.24-.18-.54-.36Z" />
+          </svg>
+        </div>
+      </a>
+
       {/* Scroll to Top */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-2xl shadow-emerald-500/50 hover:-translate-y-2 transition-all transition-duration-300 z-50 active:scale-90"
+        className="fixed bottom-8 left-8 w-12 h-12 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-2xl shadow-emerald-500/50 hover:-translate-y-2 transition-all transition-duration-300 z-50 active:scale-90"
       >
         <ArrowUp size={24} />
       </button>
