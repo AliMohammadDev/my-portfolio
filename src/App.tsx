@@ -26,17 +26,10 @@ import {
   Database,
   ArrowRight,
 } from 'lucide-react';
-import {
-  personalData,
-  skills,
-  projects,
-  services,
-  experience,
-  testimonials,
-  blogPosts,
-} from './data';
+import { personalData, skills, projects, services, experience } from './data';
 
 import cvFile from '../public/cv.pdf';
+import ContactForm from './components/ContactForm';
 // --- Custom Components ---
 
 const Navbar = ({
@@ -254,59 +247,6 @@ const ProjectCard = ({ project }: { project: (typeof projects)[0] }) => (
     </div>
   </motion.div>
 );
-
-const ContactForm = () => {
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Simulate success
-    setStatus('success');
-    setTimeout(() => setStatus('idle'), 3000);
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid md:grid-cols-2 gap-4">
-        <div className="space-y-1">
-          <label className="text-sm font-medium text-slate-500">Name</label>
-          <input
-            required
-            type="text"
-            className="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 transition-all outline-none"
-            placeholder="John Doe"
-          />
-        </div>
-        <div className="space-y-1">
-          <label className="text-sm font-medium text-slate-500">Email</label>
-          <input
-            required
-            type="email"
-            className="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 transition-all outline-none"
-            placeholder="john@example.com"
-          />
-        </div>
-      </div>
-      <div className="space-y-1">
-        <label className="text-sm font-medium text-slate-500">Message</label>
-        <textarea
-          required
-          rows={4}
-          className="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 transition-all outline-none"
-          placeholder="How can I help you?"
-        />
-      </div>
-      <button
-        type="submit"
-        className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-emerald-500/20 transition-all active:scale-[0.98]"
-      >
-        {status === 'success' ? 'Message Sent!' : 'Send Message'}
-      </button>
-    </form>
-  );
-};
-
-// --- Main App Component ---
 
 export default function App() {
   const [isDark, setIsDark] = useState(true);
@@ -682,10 +622,13 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
+
       <section id="contact" className="section-padding">
         <div className="grid lg:grid-cols-2 gap-24">
+          {/* Left Side (Info) */}
           <div>
             <SectionHeading subtitle="Get in touch">Contact Me</SectionHeading>
+
             <p className="text-lg text-slate-500 mb-12">
               Have a project in mind or want to discuss a potential partnership?
               I'm always open to new opportunities and technical challenges.
@@ -693,11 +636,8 @@ export default function App() {
 
             <div className="space-y-8 mb-12">
               <div className="flex items-center gap-6 group">
-                <div className="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center group-hover:border-emerald-500 transition-colors">
-                  <Mail
-                    size={24}
-                    className="group-hover:text-emerald-500 transition-colors"
-                  />
+                <div className="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border flex items-center justify-center">
+                  <Mail size={24} />
                 </div>
                 <div>
                   <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">
@@ -706,12 +646,10 @@ export default function App() {
                   <p className="text-xl font-bold">{personalData.email}</p>
                 </div>
               </div>
+
               <div className="flex items-center gap-6 group">
-                <div className="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center group-hover:border-emerald-500 transition-colors">
-                  <Phone
-                    size={24}
-                    className="group-hover:text-emerald-500 transition-colors"
-                  />
+                <div className="w-14 h-14 rounded-2xl bg-white dark:bg-slate-900 border flex items-center justify-center">
+                  <Phone size={24} />
                 </div>
                 <div>
                   <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">
@@ -721,29 +659,9 @@ export default function App() {
                 </div>
               </div>
             </div>
-
-            <div className="flex gap-4">
-              <a
-                href={personalData.github}
-                className="w-12 h-12 rounded-full glass flex items-center justify-center hover:scale-110 transition-transform"
-              >
-                <Github size={20} />
-              </a>
-              <a
-                href={personalData.linkedin}
-                className="w-12 h-12 rounded-full glass flex items-center justify-center hover:scale-110 transition-transform"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-12 h-12 rounded-full glass flex items-center justify-center hover:scale-110 transition-transform"
-              >
-                <Mail size={20} />
-              </a>
-            </div>
           </div>
 
+          {/* Right Side (Form) */}
           <div className="glass p-10 rounded-[2.5rem] shadow-xl">
             <h3 className="text-2xl font-bold mb-8">Send me a message</h3>
             <ContactForm />
