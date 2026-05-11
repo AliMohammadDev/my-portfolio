@@ -394,7 +394,7 @@ export default function App() {
           >
             <div className="relative z-10 aspect-[4/5] rounded-[3rem] overflow-hidden glass p-4 shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop"
+                src="https://res.cloudinary.com/dzvrf9xe3/image/upload/v1778487073/photo_2026-05-11_11-10-49_jkzdmf.jpg"
                 alt="Workspace"
                 className="w-full h-full object-cover rounded-[2.5rem]"
               />

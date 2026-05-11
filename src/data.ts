@@ -150,21 +150,3 @@ export const experience = [
     description: "Built REST APIs using Node.js and Express, worked on VR real estate platforms and SaaS admin dashboards."
   }
 ];
-
-
-export const blogPosts = [
-  {
-    title: "Scaling Laravel APIs with Redis",
-    category: "Backend",
-    date: "May 5, 2026",
-    excerpt: "Learn how to significantly improve your application's response time by implementing effective caching strategies.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?q=80&w=800&auto=format&fit=crop"
-  },
-  {
-    title: "Choosing between SQL and NoSQL",
-    category: "Database",
-    date: "April 20, 2026",
-    excerpt: "A deep dive into when to use MySQL vs MongoDB for your next large-scale project.",
-    image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=800&auto=format&fit=crop"
-  }
-];
