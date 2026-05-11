@@ -50,8 +50,36 @@ export const projects = [
     demo: "https://almanzel-alhadith.com/",
     category: "E-commerce"
   },
+
   {
     id: 3,
+    title: "almanzel-alhadith Admin & API",
+    description:
+      "Complete e-commerce and retail management system with POS, cashier operations, inventory tracking, supplier management, warehouse handling, shipping integration, and advanced admin dashboard features.",
+    tech: ["Laravel", "Filament", "MySQL", "PWA"],
+    image:
+      "https://cdn.dribbble.com/userupload/3060498/file/original-6cf9876badef099d8d0a3cd4fd421cec.png?resize=400x0",
+    category: "E-commerce"
+  },
+  {
+    id: 4,
+    title: "Real Estate VR",
+    description: "Interactive 3D real estate platform allowing users to navigate properties in a virtual environment. Features advanced filtering by location and price with smooth animations.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "VR Tech"],
+    image: "https://res.cloudinary.com/dzvrf9xe3/image/upload/v1778485575/screencapture-capella-voom-cc-master-plan-2026-05-11-10_45_32_ayrolc.png",
+    demo: "https://capella.voom.cc/",
+    category: "SaaS"
+  },
+  {
+    id: 5,
+    title: "Real Estate Admin & API",
+    description: "Production-ready RESTful API for managing large-scale real estate operations. Supports multi-tenancy with complete data isolation and detailed statistical tracking.",
+    tech: ["Node.js", "Express", "MongoDB", "TypeScript"],
+    image: "https://images.klipfolio.com/website/public/bf9c6fbb-06bf-4f1d-88a7-d02b70902bd1/data-dashboard.png",
+    category: "SaaS"
+  },
+  {
+    id: 6,
     title: "Real Estate VR",
     description: "Interactive 3D real estate platform allowing users to navigate properties in a virtual environment. Features advanced filtering by location and price with smooth animations.",
     tech: ["React", "TypeScript", "Tailwind CSS", "VR Tech"],
@@ -60,12 +88,26 @@ export const projects = [
     category: "SaaS"
   },
   {
-    id: 4,
-    title: "Real Estate Admin API",
-    description: "Production-ready RESTful API for managing large-scale real estate operations. Supports multi-tenancy with complete data isolation and detailed statistical tracking.",
-    tech: ["Node.js", "Express", "MongoDB", "TypeScript"],
-    image: "https://images.klipfolio.com/website/public/bf9c6fbb-06bf-4f1d-88a7-d02b70902bd1/data-dashboard.png",
-    category: "SaaS"
+    id: 7,
+    title: "Octo Fitout",
+    description:
+      "Corporate website for a fit-out and interior solutions company specializing in commercial, residential, and retail spaces. Focused on showcasing services, company expertise, sustainability, and completed projects with a modern responsive design.",
+    tech: ["WordPress", "Elementor", "PHP", "CSS"],
+    image:
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200&auto=format&fit=crop",
+    demo: "https://ocgroup.ae/",
+    category: "WordPress"
+  },
+  {
+    id: 8,
+    title: "Civicrete Building Maintenance",
+    description:
+      "Professional construction and maintenance company website focused on concrete restoration, strengthening, and demolition services. Developed to present company vision, mission, and engineering solutions with a clean and professional layout.",
+    tech: ["WordPress", "Elementor", "PHP", "CSS"],
+    image:
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
+    demo: "https://civicrete.com/",
+    category: "WordPress"
   }
 ];
 
