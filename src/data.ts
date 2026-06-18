@@ -108,6 +108,26 @@ export const projects = [
       "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200&auto=format&fit=crop",
     demo: "https://civicrete.com/",
     category: "WordPress"
+  },
+  {
+    id: 9,
+    title: "Nouh Agency",
+    description:
+      "Modern corporate portfolio website for a digital solutions agency. Designed to showcase the company's services, expertise, projects, and team with a clean user experience, responsive design, and strong brand identity.",
+    tech: ["React.js", "TypeScript", "Tailwind CSS", "Laravel"],
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    demo: "https://nouh-agency.com/",
+    category: "Full-Stack"
+  },
+  {
+    id: 10,
+    title: "DELVE Order Management System",
+    description:
+      "A React-based order management application that streamlines the process of collecting customer requests. Users can enter client information, select required services or products, and generate a comprehensive order report. Built with a focus on usability, fast workflows, and clear reporting for business operations.",
+    tech: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+    image: "https://assets.tastyigniter.com/media/uploads/364/Streamline-Your-Restaurant-Efficiency-with-Our-Online-Ordering-System.jpeg",
+    demo: "https://del-ve.netlify.app/",
+    category: "Full-Stack"
   }
 ];
 
